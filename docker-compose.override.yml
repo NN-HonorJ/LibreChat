@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+
+  # USE LIBRECHAT CONFIG FILE
+  api:
+    volumes:
+    - type: bind
+      source: ./librechat.yaml
+      target: /Full/Path/to/LibreChat/librechat.yaml
+
+  # DISABLE MEILISEARCH
+  meilisearch:
+    profiles:
+      - donotstart
+
+  # USE RAG API IMAGE WITH LOCAL EMBEDDINGS SUPPORT
+  rag_api:
+    image: ghcr.io/danny-avila/librechat-rag-api-dev:latest
